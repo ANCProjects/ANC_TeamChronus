@@ -6,6 +6,8 @@ import com.facebook.stetho.Stetho;
 
 import javax.inject.Inject;
 
+import team.chronus.amona.data.AppRepository;
+import team.chronus.amona.utils.AppLogger;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
@@ -15,7 +17,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class App extends Application {
 
     @Inject
-    RecipeRepository mRecipeRepository;
+    AppRepository mAppRepository;
 
     @Inject
     CalligraphyConfig mCalligraphyConfig;

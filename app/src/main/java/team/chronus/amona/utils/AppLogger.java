@@ -7,7 +7,7 @@ import timber.log.Timber;
  * Created by ibrahimabdulkadir on 13/07/2017.
  */
 
-public class AppLoger {
+public class AppLogger {
 
     public static void init() {
         if (BuildConfig.DEBUG) {
