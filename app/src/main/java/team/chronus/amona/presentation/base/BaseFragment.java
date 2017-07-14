@@ -13,7 +13,7 @@ import team.chronus.amona.di.component.ActivityComponent;
 import team.chronus.amona.utils.CommonUtils;
 
 /**
- * Created by ibrahimabdulkadir on 20/06/2017.
+ * Created by ibrahimabdulkadir on 14/07/2017.
  */
 
 public abstract class BaseFragment extends Fragment implements MvpView {

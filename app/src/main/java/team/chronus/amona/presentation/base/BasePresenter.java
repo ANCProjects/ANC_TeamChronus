@@ -1,17 +1,10 @@
 package team.chronus.amona.presentation.base;
 
 /**
- * Created by ibrahimabdulkadir on 20/06/2017.
+ * Created by ibrahimabdulkadir on 14/07/2017.
  */
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
-
 import javax.inject.Inject;
-import javax.net.ssl.HttpsURLConnection;
 
 import io.reactivex.disposables.CompositeDisposable;
 import retrofit2.HttpException;

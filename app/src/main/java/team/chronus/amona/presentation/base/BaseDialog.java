@@ -21,7 +21,7 @@ import butterknife.Unbinder;
 import team.chronus.amona.di.component.ActivityComponent;
 
 /**
- * Created by ibrahimabdulkadir on 20/06/2017.
+ * Created by ibrahimabdulkadir on 14/07/2017.
  */
 
 public abstract class BaseDialog extends DialogFragment implements DialogMvpView {

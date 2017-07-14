@@ -3,6 +3,7 @@ package team.chronus.amona.data;
 import java.util.List;
 
 import io.reactivex.Observable;
+import team.chronus.amona.data.model.Event;
 
 /**
  * Created by ibrahimabdulkadir on 14/07/2017.
@@ -10,13 +11,11 @@ import io.reactivex.Observable;
 
 public interface AppDataSource {
 
-    Observable<List<Recipe>> getRecipes();
+    Observable<List<Event>> getRecommendedEvents();
 
-    Observable<List<Ingredient>> getRecipeIngredients(int recipeId);
+    Observable<List<Event>> getSelfEvents();
 
-    Observable<List<Ingredient>> getRecipeIngredients(String recipeName);
+    void saveRecommendedEvents(List<Event> events);
 
-    Observable<List<Step>> getRecipeSteps(int recipeId);
-
-    void saveRecipes(List<Recipe> recipes);
+    void saveSelfEvents(List<Event> events);
 }

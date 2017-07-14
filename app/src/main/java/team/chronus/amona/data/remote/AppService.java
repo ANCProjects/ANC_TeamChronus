@@ -4,6 +4,8 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
+import team.chronus.amona.data.model.Event;
 
 /**
  * Created by ibrahimabdulkadir on 14/07/2017.
@@ -11,6 +13,9 @@ import retrofit2.http.GET;
 
 public interface AppService {
 
-    @GET("/topher/2017/May/59121517_baking/baking.json")
-    Observable<List<Recipe>> loadRecipesFromServer();
+    @GET("/recommended/events")
+    Observable<List<Event>> loadRecommendedEventsFromServer(@Query("access_token") String accessToken);
+
+    @GET("/self/events")
+    Observable<List<Event>> loadSelfEventsFromServer(@Query("access_token") String accessToken);
 }

@@ -7,6 +7,9 @@ import com.facebook.stetho.Stetho;
 import javax.inject.Inject;
 
 import team.chronus.amona.data.AppRepository;
+import team.chronus.amona.di.component.ApplicationComponent;
+import team.chronus.amona.di.component.DaggerApplicationComponent;
+import team.chronus.amona.di.module.ApplicationModule;
 import team.chronus.amona.utils.AppLogger;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 

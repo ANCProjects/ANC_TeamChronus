@@ -17,6 +17,8 @@ import team.chronus.amona.BuildConfig;
 import team.chronus.amona.R;
 import team.chronus.amona.data.AppDataSource;
 import team.chronus.amona.data.local.AppLocalDataSource;
+import team.chronus.amona.data.local.db.DbHelper;
+import team.chronus.amona.data.local.prefs.PreferencesHelper;
 import team.chronus.amona.data.remote.AppRemoteDataSource;
 import team.chronus.amona.data.remote.AppService;
 import team.chronus.amona.data.remote.ServiceFactory;
@@ -24,6 +26,7 @@ import team.chronus.amona.di.ApplicationContext;
 import team.chronus.amona.di.DatabaseInfo;
 import team.chronus.amona.di.Local;
 import team.chronus.amona.di.Remote;
+import team.chronus.amona.utils.AppConstants;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
@@ -83,8 +86,8 @@ public class ApplicationModule {
     @Singleton
     @Provides
     @Remote
-    AppDataSource provideAppRemoteDataSource(AppService service) {
-        return new AppRemoteDataSource(service);
+    AppDataSource provideAppRemoteDataSource(AppService service, PreferencesHelper preferencesHelper) {
+        return new AppRemoteDataSource(service, preferencesHelper);
     }
 
     @Singleton

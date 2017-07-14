@@ -3,6 +3,7 @@ package team.chronus.amona.di.component;
 import dagger.Component;
 import team.chronus.amona.di.PerActivity;
 import team.chronus.amona.di.module.ActivityModule;
+import team.chronus.amona.presentation.splash.SplashActivity;
 
 /**
  * Created by ibrahimabdulkadir on 14/07/2017.
@@ -13,7 +14,5 @@ import team.chronus.amona.di.module.ActivityModule;
 public interface ActivityComponent {
 
     void inject(SplashActivity activity);
-
-
 
 }

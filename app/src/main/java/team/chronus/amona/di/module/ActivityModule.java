@@ -9,6 +9,9 @@ import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
 import team.chronus.amona.di.ActivityContext;
 import team.chronus.amona.di.PerActivity;
+import team.chronus.amona.presentation.splash.SplashMvpPresenter;
+import team.chronus.amona.presentation.splash.SplashMvpView;
+import team.chronus.amona.presentation.splash.SplashPresenter;
 
 /**
  * Created by ibrahimabdulkadir on 14/07/2017.

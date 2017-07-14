@@ -26,7 +26,7 @@ import team.chronus.amona.utils.NetworkUtils;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
- * Created by ibrahimabdulkadir on 20/06/2017.
+ * Created by ibrahimabdulkadir on 14/07/2017.
  */
 
 public abstract class BaseActivity extends AppCompatActivity

@@ -28,11 +28,13 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.meetup.com\"")
+            buildConfigField("String", "OAUTH_URL", "\"https://secure.meetup.com\"")
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", "\"https://api.meetup.com\"")
+            buildConfigField("String", "OAUTH_URL", "\"https://secure.meetup.com\"")
         }
     }
 
@@ -57,7 +59,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-
     // Library definitions
     def supportLib = rootProject.ext.supportDependencies
     def rx = rootProject.ext.rxDependencies
@@ -73,7 +74,6 @@ dependencies {
     def timber = rootProject.ext.timberDependency
     def picasso = rootProject.picassoDependency
 
-
     // Test definitions
     def junit = rootProject.ext.junitDependency
     def mockito = rootProject.ext.mockitoDependency
@@ -82,8 +82,6 @@ dependencies {
     def espressoContrib = rootProject.ext.espressoContribDependency
     def espressoIntents = rootProject.ext.espressoIntentsDependency
     def espressoIdlingResource = rootProject.ext.espressoIdlingResDependency
-
-
 
     // Support Libraries
     compile supportLib.appCompat
@@ -101,9 +99,6 @@ dependencies {
     // Dagger
     compile dagger.dagger
     annotationProcessor dagger.daggerApt
-    provided 'javax.annotation:jsr250-api:1.0'
-    compile 'javax.inject:javax.inject:1'
-
 
     // ButterKnife
     compile butterKnife.butterknife
@@ -137,7 +132,6 @@ dependencies {
     compile timber
     compile picasso
 
-
     // Local unit test
     testCompile junit
     testCompile mockito
@@ -167,6 +161,9 @@ dependencies {
     compile espressoIdlingResource
 
 
+    compile 'javax.inject:javax.inject:1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    provided 'javax.annotation:jsr250-api:1.0'
 }
 
 configurations.all {

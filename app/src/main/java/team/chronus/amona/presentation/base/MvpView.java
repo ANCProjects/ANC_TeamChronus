@@ -1,7 +1,7 @@
 package team.chronus.amona.presentation.base;
 
 /**
- * Created by ibrahimabdulkadir on 20/06/2017.
+ * Created by ibrahimabdulkadir on 14/07/2017.
  */
 
 import android.support.annotation.StringRes;
