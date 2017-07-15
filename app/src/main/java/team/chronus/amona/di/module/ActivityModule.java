@@ -9,6 +9,15 @@ import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
 import team.chronus.amona.di.ActivityContext;
 import team.chronus.amona.di.PerActivity;
+import team.chronus.amona.presentation.auth.AuthMvpPresenter;
+import team.chronus.amona.presentation.auth.AuthMvpView;
+import team.chronus.amona.presentation.auth.AuthPresenter;
+import team.chronus.amona.presentation.detail.DetailMvpPresenter;
+import team.chronus.amona.presentation.detail.DetailMvpView;
+import team.chronus.amona.presentation.detail.DetailPresenter;
+import team.chronus.amona.presentation.master.MasterMvpPresenter;
+import team.chronus.amona.presentation.master.MasterMvpView;
+import team.chronus.amona.presentation.master.MasterPresenter;
 import team.chronus.amona.presentation.splash.SplashMvpPresenter;
 import team.chronus.amona.presentation.splash.SplashMvpView;
 import team.chronus.amona.presentation.splash.SplashPresenter;
@@ -49,6 +58,30 @@ public class ActivityModule {
             SplashPresenter<SplashMvpView> presenter) {
         return presenter;
     }
+
+    @Provides
+    @PerActivity
+    AuthMvpPresenter<AuthMvpView> provideAuthPresenter(
+            AuthPresenter<AuthMvpView> presenter) {
+        return presenter;
+    }
+
+
+    @Provides
+    @PerActivity
+    MasterMvpPresenter<MasterMvpView> provideMasterPresenter(
+            MasterPresenter<MasterMvpView> presenter) {
+        return presenter;
+    }
+
+
+    @Provides
+    @PerActivity
+    DetailMvpPresenter<DetailMvpView> provideDetailPresenter(
+            DetailPresenter<DetailMvpView> presenter) {
+        return presenter;
+    }
+
 
     @Provides
     LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {

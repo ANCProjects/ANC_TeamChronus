@@ -20,6 +20,7 @@ import butterknife.Unbinder;
 import team.chronus.amona.App;
 import team.chronus.amona.R;
 import team.chronus.amona.di.component.ActivityComponent;
+import team.chronus.amona.di.component.DaggerActivityComponent;
 import team.chronus.amona.di.module.ActivityModule;
 import team.chronus.amona.utils.CommonUtils;
 import team.chronus.amona.utils.NetworkUtils;
