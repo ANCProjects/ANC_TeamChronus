@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import team.chronus.amona.R;
+import team.chronus.amona.presentation.auth.AuthActivity;
 import team.chronus.amona.presentation.base.BaseActivity;
 import team.chronus.amona.presentation.master.MasterActivity;
 
@@ -36,7 +37,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
     @Override
     public void openMasterActivity() {
-        startActivity(MasterActivity.getStartIntent(SplashActivity.this));
+        startActivity(AuthActivity.getStartIntent(SplashActivity.this));
         finish();
     }
 
