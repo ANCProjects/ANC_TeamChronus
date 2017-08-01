@@ -10,4 +10,6 @@ import team.chronus.amona.presentation.base.MvpView;
 public interface SplashMvpView extends MvpView {
 
     void openMasterActivity();
+
+    void openAuthActivity();
 }

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import team.chronus.amona.R;
+import team.chronus.amona.data.local.prefs.PreferencesHelper;
 import team.chronus.amona.presentation.auth.AuthActivity;
 import team.chronus.amona.presentation.base.BaseActivity;
 import team.chronus.amona.presentation.master.MasterActivity;
@@ -32,13 +33,29 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
         setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(SplashActivity.this);
+
+        check_status();
     }
 
+    public void check_status(){
+        PreferencesHelper mPref = new PreferencesHelper(getApplicationContext());
+        if((mPref.getExpiresIn() != null) && (mPref.getAccesToken() != null) && (mPref.getRefreshToken() != null)){
+            openMasterActivity();
+        }
+        else{
+            openAuthActivity();
+        }
+    }
 
     @Override
     public void openMasterActivity() {
-        startActivity(AuthActivity.getStartIntent(SplashActivity.this));
+        startActivity(MasterActivity.getStartIntent(SplashActivity.this));
         finish();
+    }
+
+    @Override
+    public void openAuthActivity(){
+        startActivity(AuthActivity.getStartIntent(SplashActivity.this));
     }
 
 
