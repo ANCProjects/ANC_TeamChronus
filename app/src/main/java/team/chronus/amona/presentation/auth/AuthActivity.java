@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import team.chronus.amona.R;
 import team.chronus.amona.data.local.prefs.PreferencesHelper;
 import team.chronus.amona.presentation.base.BaseActivity;
+import team.chronus.amona.presentation.master.MasterActivity;
 
 public class AuthActivity extends BaseActivity implements AuthMvpView {
 
@@ -37,6 +38,11 @@ public class AuthActivity extends BaseActivity implements AuthMvpView {
         mPresenter.onAttach(AuthActivity.this);
 
         //Get the Meetup Tokens
+        mPref = new PreferencesHelper(getApplicationContext());
+        mPref.deleteAccesToken();
+        mPref.deleteExpiresIn();
+        mPref.deleteRefreshToken();
+
         LaunchIntent();
     }
 
@@ -48,15 +54,32 @@ public class AuthActivity extends BaseActivity implements AuthMvpView {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 1 && resultCode == RESULT_OK){
-            String access_token = data.getExtras().getString("access_token");
-            String refresh_token = data.getExtras().getString("refresh_token");
-            String expires_in = data.getExtras().getString("expires_in");
+            if(data != null) {
+                String access_token = data.getExtras().getString("access_token");
+                String refresh_token = data.getExtras().getString("refresh_token");
+                String expires_in = data.getExtras().getString("expires_in");
 
-            mPref.saveAccesToken(access_token);
-            mPref.saveExpiresIn(expires_in);
-            mPref.saveRefreshToken(refresh_token);
+                mPref = new PreferencesHelper(getApplicationContext());
+                mPref.deleteAccesToken();
+                mPref.deleteExpiresIn();
+                mPref.deleteRefreshToken();
 
-            //Move to another Activity here
+                mPref.saveRefreshToken(access_token);
+                mPref.saveRefreshToken(refresh_token);
+                mPref.saveExpiresIn(expires_in);
+
+                //mPref.saveAccesToken(access_token);
+               // mPref.saveExpiresIn(expires_in);
+               // mPref.saveRefreshToken(refresh_token);
+
+                //Move to another Activity here
+
+                Intent intent = new Intent(AuthActivity.this, MasterActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Log.d("Amona: ","Data is null");
+            }
         }
     }
 
