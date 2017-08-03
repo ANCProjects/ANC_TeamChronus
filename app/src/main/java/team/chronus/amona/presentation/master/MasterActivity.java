@@ -51,6 +51,7 @@ public class MasterActivity extends BaseActivity implements MasterMvpView {
         manager.beginTransaction()
                 .add(R.id.master_fragment_container, masterFragment)
                 .commit();
+
     }
 
 }

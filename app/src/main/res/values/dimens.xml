@@ -16,7 +16,7 @@
     <!-- Spacing -->
     <dimen name="spacing_small">4dp</dimen>
     <dimen name="spacing_medium">8dp</dimen>
-    <dimen name="image_medium_padding">25dp</dimen>
 
+    <dimen name="image_medium_padding">25dp</dimen>
 
 </resources>
