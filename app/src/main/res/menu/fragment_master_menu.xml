@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:title="@string/current_direction"
+            android:icon="@drawable/current_direction"
+            android:id="@+id/current_direction"/>
+
+        <item android:title="@string/meet_ups"
+            android:icon="@drawable/meet_up"
+            android:id="@+id/meet_up"/>
+
+        <item android:title="@string/edit_profile"
+            android:icon="@drawable/edit_profile"
+            android:id="@+id/edit_profile"/>
+    </group>
+</menu>

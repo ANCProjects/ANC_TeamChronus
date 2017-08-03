@@ -1,0 +1,121 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+// Define versions in a single place
+ext {
+
+    // Sdk and tools versions
+    buildToolsVersion = '25.0.2'
+    minSdkVersion = 16
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+
+
+    // Library versions
+    supportLibraryVersion = '25.3.1'
+    constraintLayoutVersion = "1.0.2"
+    rxjava2Version = '2.0.6'
+    rxAndroidVersion = '2.0.1'
+    rxJavaIneropVersion = '0.10.0'
+    dagger2Version = '2.8'
+    butterKnifeVersion = '8.5.1'
+    retrofitVersion = '2.3.0'
+    stethoVersion =  '1.5.0'
+    okhttpVersion = '3.8.0'
+    autoValueVersion = '1.4'
+    autoValueGsonVersion = '0.4.6'
+    autoValueParcelVersion = '0.2.5'
+    autoValueParcelVersion = '0.2.5'
+    gsonVersion = '2.8.0'
+    sqlBriteVersion = '1.1.1'
+    calligraphyVersion = '2.2.0'
+    timberVersion = '4.5.1'
+    picassoVersion = '2.5.2'
+
+
+    // Test versions
+    junitVersion = '4.12'
+    espressoVersion = '2.2.2'
+    mockitoVersion = '2.7.1'
+
+
+    // Library dependencies
+    supportDependencies = [
+            appCompat       : "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            support         : "com.android.support:support-v4:${supportLibraryVersion}",
+            design          : "com.android.support:design:${supportLibraryVersion}",
+            cardView        : "com.android.support:cardview-v7:${supportLibraryVersion}",
+            recyclerView    : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
+            constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
+    ]
+
+    rxDependencies = [
+            rxJava       : "io.reactivex.rxjava2:rxjava:${rxjava2Version}",
+            rxAndroid    : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJavaInterop: "com.github.akarnokd:rxjava2-interop:${rxJavaIneropVersion}"
+    ]
+
+    daggerDependencies = [
+            dagger   : "com.google.dagger:dagger:${dagger2Version}",
+            daggerApt: "com.google.dagger:dagger-compiler:${dagger2Version}",
+    ]
+
+    butterKnifeDependencies = [
+            butterknife   : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            butterknifeApt: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+    ]
+
+    retrofitDependencies = [
+            retrofit     : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            rxJavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+            gsonConverter: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+    ]
+
+    okhttpDependencies = [
+            okhttp: "com.squareup.okhttp3:okhttp:${okhttpVersion}",
+            logging : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
+    ]
+
+    stethoDependencies = [
+            stetho       : "com.facebook.stetho:stetho:${stethoVersion}",
+            networkHelper: "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
+    ]
+
+    autoValueDependencies = [
+            autoValueApt     : "com.google.auto.value:auto-value:${autoValueVersion}",
+            autoValueProvided: "com.jakewharton.auto.value:auto-value-annotations:${autoValueVersion}",
+            gsonApt          : "com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}",
+            gsonProvided     : "com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}",
+            parcelApt           : "com.ryanharter.auto.value:auto-value-parcel:${autoValueParcelVersion}",
+            parcelAdapter    : "com.ryanharter.auto.value:auto-value-parcel-adapter:${autoValueParcelVersion}",
+    ]
+
+    gsonDependency = "com.google.code.gson:gson:${gsonVersion}"
+    sqlBriteDependency = "com.squareup.sqlbrite:sqlbrite:${sqlBriteVersion}"
+    calligraphyDependency = "uk.co.chrisjenx:calligraphy:${calligraphyVersion}"
+    timberDependency = "com.jakewharton.timber:timber:${timberVersion}"
+    picassoDependency =  "com.squareup.picasso:picasso:${picassoVersion}"
+
+
+    // Test dependencies
+    junitDependency = "junit:junit:${junitVersion}"
+    mockitoDependency = "org.mockito:mockito-core:${mockitoVersion}"
+
+
+    espressoExcludeGroups = [
+            group1: "com.android.support", module1: "support-annotations",
+            group2: "com.android.support", module2: "support-v4",
+            group3: "com.android.support", module3: "appcompat-v7",
+            group4: "com.android.support", module4: "design",
+            group5: "com.android.support", module5: "recyclerview-v7",
+    ]
+    espressoDependency = "com.android.support.test.espresso:espresso-core:${espressoVersion}"
+    espressoContribDependency = "com.android.support.test.espresso:espresso-contrib:${espressoVersion}"
+    espressoIntentsDependency = "com.android.support.test.espresso:espresso-intents:${espressoVersion}"
+    espressoIdlingResDependency = "com.android.support.test.espresso:espresso-idling-resource:${espressoVersion}"
+
+}
+

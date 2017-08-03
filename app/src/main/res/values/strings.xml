@@ -1,0 +1,39 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Amona</string>
+    <string name="auth_label">Login</string>
+    <string name="master_label">Master</string>
+    <string name="detail_label">Detail</string>
+
+    <string name="splash_text">Ultimate Meetup App</string>
+
+
+    <!--App Message-->
+    <string name="error_no_internet">Couldn\'t connect. Please check your Internet connection!</string>
+    <string name="error_api_retry">Please retry!</string>
+    <string name="error_default">Something wrong happened!</string>
+
+
+    <!--empty state-->
+    <string name="empty_screen">We do not have anything\nhere right now.</string>
+    <string name="pull_refresh">Pull to refresh</string>
+
+    <!--Event Strings-->
+    <string name="group_picture">group_picture</string>
+    <string name="event_name">Event Name</string>
+    <string name="group_name">Group Name</string>
+    <string name="event_date">Event Date</string>
+    <string name="event_description">Event Description</string>
+    <string name="no_events_available">No Events available in your current location</string>
+
+    <!--User Strings-->
+    <string name="user_image">User Image</string>
+    <string name="user_email">User Email</string>
+    <string name="users_name">User\'s Name</string>
+
+    <!--Navigation drawer strings-->
+    <string name="current_direction">Current Direction</string>
+    <string name="meet_ups">Meet ups</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="open_drawer">Open Navigation Drawer</string>
+    <string name="close_drawer">Close Navigation Drawer</string>
+</resources>

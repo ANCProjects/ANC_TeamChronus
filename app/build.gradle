@@ -1,0 +1,171 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'me.tatarka:gradle-retrolambda:3.6.1'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply from: '../config/quality/quality.gradle'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "team.chronus.amona"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api.meetup.com\"")
+            buildConfigField("String", "OAUTH_URL", "\"https://secure.meetup.com\"")
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"https://api.meetup.com\"")
+            buildConfigField("String", "OAUTH_URL", "\"https://secure.meetup.com\"")
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "12g"
+    }
+
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+}
+
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Library definitions
+    def supportLib = rootProject.ext.supportDependencies
+    def rx = rootProject.ext.rxDependencies
+    def dagger = rootProject.ext.daggerDependencies
+    def butterKnife = rootProject.ext.butterKnifeDependencies
+    def retrofit = rootProject.ext.retrofitDependencies
+    def okhttp = rootProject.ext.okhttpDependencies
+    def stetho = rootProject.ext.stethoDependencies
+    def autoValue = rootProject.ext.autoValueDependencies
+    def gson = rootProject.ext.gsonDependency
+    def sqlBrite = rootProject.ext.sqlBriteDependency
+    def calligraphy = rootProject.ext.calligraphyDependency
+    def timber = rootProject.ext.timberDependency
+    def picasso = rootProject.picassoDependency
+
+    // Test definitions
+    def junit = rootProject.ext.junitDependency
+    def mockito = rootProject.ext.mockitoDependency
+    def espresso = rootProject.ext.espressoDependency
+    def espressoExclude = rootProject.ext.espressoExcludeGroups
+    def espressoContrib = rootProject.ext.espressoContribDependency
+    def espressoIntents = rootProject.ext.espressoIntentsDependency
+    def espressoIdlingResource = rootProject.ext.espressoIdlingResDependency
+
+    // Support Libraries
+    compile supportLib.appCompat
+    compile supportLib.support
+    compile supportLib.design
+    compile supportLib.cardView
+    compile supportLib.recyclerView
+    compile supportLib.constraintLayout
+
+    // Rx
+    compile rx.rxAndroid
+    compile rx.rxJava
+    compile rx.rxJavaInterop
+
+    // Dagger
+    compile dagger.dagger
+    annotationProcessor dagger.daggerApt
+
+    // ButterKnife
+    compile butterKnife.butterknife
+    annotationProcessor butterKnife.butterknifeApt
+
+    // Retrofit
+    compile retrofit.retrofit
+    compile retrofit.rxJavaAdapter
+    compile retrofit.gsonConverter
+
+    // okhttp
+    compile okhttp.okhttp
+    compile okhttp.logging
+
+    // Stetho
+    compile stetho.stetho
+    compile stetho.networkHelper
+
+    // AutoValue
+    annotationProcessor autoValue.autoValueApt
+    provided autoValue.autoValueProvided
+    annotationProcessor autoValue.gsonApt
+    provided autoValue.gsonProvided
+    annotationProcessor autoValue.parcelApt
+    compile autoValue.parcelAdapter
+
+    // Others
+    compile gson
+    compile sqlBrite
+    compile calligraphy
+    compile timber
+    compile picasso
+
+    // Local unit test
+    testCompile junit
+    testCompile mockito
+    testAnnotationProcessor dagger.daggerApt
+
+    // UI test
+    androidTestCompile(espresso, {
+        exclude group: espressoExclude.group1, module: espressoExclude.module1
+        exclude group: espressoExclude.group2, module: espressoExclude.module2
+        exclude group: espressoExclude.group3, module: espressoExclude.module3
+        exclude group: espressoExclude.group4, module: espressoExclude.module4
+        exclude group: espressoExclude.group5, module: espressoExclude.module5
+    })
+
+    androidTestCompile(espressoContrib, {
+        exclude group: espressoExclude.group1, module: espressoExclude.module1
+        exclude group: espressoExclude.group2, module: espressoExclude.module2
+        exclude group: espressoExclude.group3, module: espressoExclude.module3
+        exclude group: espressoExclude.group4, module: espressoExclude.module4
+        exclude group: espressoExclude.group5, module: espressoExclude.module5
+    })
+
+    androidTestCompile(espressoIntents, {
+        exclude group: espressoExclude.group1, module: espressoExclude.module1
+    })
+
+    compile espressoIdlingResource
+
+
+    compile 'javax.inject:javax.inject:1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    provided 'javax.annotation:jsr250-api:1.0'
+}
+
+configurations.all {
+    resolutionStrategy.force "com.android.support:support-annotations:$supportLibraryVersion"
+}
