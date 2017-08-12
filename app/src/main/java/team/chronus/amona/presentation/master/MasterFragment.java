@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -73,6 +74,7 @@ public class MasterFragment extends Fragment implements
         if (eventList.isEmpty()){
             emptyLayout.setVisibility(View.VISIBLE);
         }
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return view;
     }
     //call from presenter on success
