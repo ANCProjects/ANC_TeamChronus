@@ -4,12 +4,14 @@ import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 
+import java.io.Serializable;
+
 /**
  * Created by ibrahimabdulkadir on 14/07/2017.
  */
 
 @AutoValue
-public abstract class Event {
+public abstract class Event implements Serializable{
 
     public abstract Long created();
     public abstract String id();

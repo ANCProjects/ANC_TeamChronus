@@ -19,4 +19,6 @@
 
     <dimen name="image_medium_padding">25dp</dimen>
 
+    <!--Map Zoom-->
+    <dimen name="map_inset">100dp</dimen>
 </resources>
