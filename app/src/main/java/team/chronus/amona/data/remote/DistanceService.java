@@ -10,7 +10,7 @@ import team.chronus.amona.data.model.distance.MeetUpDistance;
  */
 
 public interface DistanceService {
-    @GET("directions/json")
+    @GET("directions/json?")
     Observable<MeetUpDistance> getDistance(@Query("origin") String origin,
                                            @Query("destination") String destination,
                                            @Query("key") String key);

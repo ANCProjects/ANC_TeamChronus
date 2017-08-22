@@ -3,7 +3,6 @@ package team.chronus.amona.presentation.detail;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.TextView;
 
@@ -13,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import team.chronus.amona.R;
 import team.chronus.amona.data.model.Event;
+import team.chronus.amona.data.model.distance.MeetUpDistance;
 import team.chronus.amona.presentation.base.BaseActivity;
 
 public class DetailActivity extends BaseActivity implements DetailMvpView {
@@ -30,6 +30,8 @@ public class DetailActivity extends BaseActivity implements DetailMvpView {
 
     @BindView(R.id.long_event_desc)
     TextView longDescription;
+
+    private DetailFragment mapFragment;
 
     public static Intent getStartIntent(Context context, Event event) {
         Intent intent = new Intent(context, DetailActivity.class);
@@ -64,7 +66,7 @@ public class DetailActivity extends BaseActivity implements DetailMvpView {
         double lat = event.venue().lat();
         double lon = event.venue().lon();
 
-        Fragment mapFragment = DetailFragment.newInstance(lat, lon);
+        mapFragment = DetailFragment.newInstance(lat, lon);
 
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction()
@@ -76,5 +78,9 @@ public class DetailActivity extends BaseActivity implements DetailMvpView {
         meetUpAddress.setText(event.how_to_find_us());
 
         longDescription.setText(event.description());
+    }
+
+    public void distanceReceived(MeetUpDistance distance){
+        mapFragment.showDirection(distance);
     }
 }

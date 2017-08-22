@@ -68,8 +68,6 @@ public class MasterActivity extends BaseActivity implements MasterMvpView,
 
         mPresenter.onAttach(MasterActivity.this);
         setUp();
-
-        mPresenter.loadEvents();
     }
 
     @Override
@@ -77,11 +75,9 @@ public class MasterActivity extends BaseActivity implements MasterMvpView,
         mPresenter.onDetach();
         super.onDestroy();
     }
-    //no call to setUp()?
-    //should presenter be calling setUp() after the view has been attached
+
     @Override
     protected void setUp() {
-        //check to see if activity is already hosting fragment
         update();
         setUpNavigationDrawer();
         if (eventList.isEmpty()){
