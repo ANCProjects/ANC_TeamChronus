@@ -4,11 +4,14 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -138,8 +141,12 @@ public class DetailFragment extends SupportMapFragment{
         List<Steps> stepsList = leg.steps();
         stepList = stepsList;
         options = new PolylineOptions();
-
-        map.clear();
+        if (map != null){
+            map.clear();
+        }else {
+            Log.d(TAG, "Map is null");
+            return;
+        }
         StartLocation startLocation = leg.startLocation();
         addStartLocation(startLocation);
 
@@ -195,19 +202,19 @@ public class DetailFragment extends SupportMapFragment{
     }
 
     public void showStepInstruction(){
-        //show specific instruction for every step on click
-        map.setOnMapClickListener(latLng -> {
+        map.setOnMarkerClickListener(marker -> {
             List<LatLng> stepLatLng = options.getPoints();
             for (LatLng currentPosition : stepLatLng) {
-                if (currentPosition.equals(latLng)){
-                    //escape html characters
+                if (currentPosition.equals(marker.getPosition())){
                     Steps step = returnLocationStep(currentPosition);
                     if (step != null){
-                        CharSequence instruction = step.htmlInstructions();
-                        showSnackBar(instruction);
+                        String instruction = step.htmlInstructions();
+                        showToastMessage(instruction);
+                        return true;
                     }
                 }
             }
+            return false;
         });
     }
 
@@ -221,8 +228,17 @@ public class DetailFragment extends SupportMapFragment{
         return null;
     }
 
-    public void showSnackBar(CharSequence message){
-        //test out snack bar for NPE
-        Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
+    @SuppressWarnings("deprecation")
+    public void showToastMessage(String messageHtml){
+        Spanned escapedMsg;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            escapedMsg = Html.fromHtml(messageHtml, Html.FROM_HTML_MODE_COMPACT);
+        }else {
+            escapedMsg = Html.fromHtml(messageHtml);
+        }
+        Toast.makeText(getActivity(), escapedMsg, Toast.LENGTH_LONG).show();
     }
+
+
 }
