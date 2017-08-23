@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.text.Html;
-import android.text.Spanned;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -51,7 +49,6 @@ public class DetailFragment extends SupportMapFragment{
     private static final int permissionCode = 1121;
     private static final String TAG = "DetailFragment";
     private PolylineOptions options;
-    private List<Steps> stepList;
 
     public static DetailFragment newInstance(double lat, double lon){
         DetailFragment fragment = new DetailFragment();
@@ -139,7 +136,6 @@ public class DetailFragment extends SupportMapFragment{
         Route route = distance.routes().get(0);
         Leg leg = route.legs().get(0);
         List<Steps> stepsList = leg.steps();
-        stepList = stepsList;
         options = new PolylineOptions();
         if (map != null){
             map.clear();
@@ -154,8 +150,6 @@ public class DetailFragment extends SupportMapFragment{
 
         EndLocation endLocation = leg.endLocation();
         addEndLocation(endLocation);
-
-        showStepInstruction();
         //consider showing the distance and duration
     }
 
@@ -182,7 +176,9 @@ public class DetailFragment extends SupportMapFragment{
                     (R.drawable.step_dot);
             MarkerOptions stepOption = new MarkerOptions();
             stepOption.position(stepLatLng)
-                    .icon(stepDescriptor);
+                    .icon(stepDescriptor)
+                    .title("Direction")
+                    .snippet(stepDirection(step.htmlInstructions()));
         }
     }
 
@@ -201,44 +197,12 @@ public class DetailFragment extends SupportMapFragment{
         line.setColor(Color.BLUE);
     }
 
-    public void showStepInstruction(){
-        map.setOnMarkerClickListener(marker -> {
-            List<LatLng> stepLatLng = options.getPoints();
-            for (LatLng currentPosition : stepLatLng) {
-                if (currentPosition.equals(marker.getPosition())){
-                    Steps step = returnLocationStep(currentPosition);
-                    if (step != null){
-                        String instruction = step.htmlInstructions();
-                        showToastMessage(instruction);
-                        return true;
-                    }
-                }
-            }
-            return false;
-        });
-    }
-
-    public Steps returnLocationStep(LatLng latLng){
-        for (Steps step : stepList){
-            if (step.startLocation().lat() == latLng.latitude &&
-                    step.startLocation().lng() == latLng.longitude){
-                return step;
-            }
-        }
-        return null;
-    }
-
     @SuppressWarnings("deprecation")
-    public void showToastMessage(String messageHtml){
-        Spanned escapedMsg;
-
+    public String stepDirection(String messageHtml){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-            escapedMsg = Html.fromHtml(messageHtml, Html.FROM_HTML_MODE_COMPACT);
+            return Html.fromHtml(messageHtml, Html.FROM_HTML_MODE_COMPACT).toString();
         }else {
-            escapedMsg = Html.fromHtml(messageHtml);
+            return Html.fromHtml(messageHtml).toString();
         }
-        Toast.makeText(getActivity(), escapedMsg, Toast.LENGTH_LONG).show();
     }
-
-
 }
