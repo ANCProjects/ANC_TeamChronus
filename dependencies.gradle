@@ -41,6 +41,11 @@ ext {
     espressoVersion = '2.2.2'
     mockitoVersion = '2.7.1'
 
+    //Play Services Version
+    playServicesVersion = "11.0.2"
+
+    //Android Maps Utils
+    mapUtilsVersion = "0.4"
 
     // Library dependencies
     supportDependencies = [
@@ -93,12 +98,18 @@ ext {
             parcelAdapter    : "com.ryanharter.auto.value:auto-value-parcel-adapter:${autoValueParcelVersion}",
     ]
 
+    playServicesDependencies = [
+            maps : "com.google.android.gms:play-services-maps:${playServicesVersion}",
+            location : "com.google.android.gms:play-services-location:${playServicesVersion}"
+    ]
+
     gsonDependency = "com.google.code.gson:gson:${gsonVersion}"
     sqlBriteDependency = "com.squareup.sqlbrite:sqlbrite:${sqlBriteVersion}"
     calligraphyDependency = "uk.co.chrisjenx:calligraphy:${calligraphyVersion}"
     timberDependency = "com.jakewharton.timber:timber:${timberVersion}"
     picassoDependency =  "com.squareup.picasso:picasso:${picassoVersion}"
 
+    androidMapUtilsDependency = "com.google.maps.android:android-maps-utils:${mapUtilsVersion}"
 
     // Test dependencies
     junitDependency = "junit:junit:${junitVersion}"
