@@ -161,7 +161,8 @@ public class DetailFragment extends SupportMapFragment{
                 (R.drawable.current_position);
         MarkerOptions startOption = new MarkerOptions();
         startOption.position(startLatLng)
-                .icon(startDescriptor);
+                .icon(startDescriptor)
+		.title("Current Position");
 
         map.addMarker(startOption);
     }
@@ -177,7 +178,7 @@ public class DetailFragment extends SupportMapFragment{
             MarkerOptions stepOption = new MarkerOptions();
             stepOption.position(stepLatLng)
                     .icon(stepDescriptor)
-                    .title("Direction")
+                    .title("Direction: ")
                     .snippet(stepDirection(step.htmlInstructions()));
         }
     }
@@ -189,7 +190,8 @@ public class DetailFragment extends SupportMapFragment{
                 (R.drawable.destination);
         MarkerOptions endOption = new MarkerOptions();
         endOption.position(endLatLng)
-                .icon(endDescriptor);
+                .icon(endDescriptor)
+		.title("Meet Up Location");
         map.addMarker(endOption);
 
         Polyline line = map.addPolyline(options);
