@@ -5,4 +5,5 @@ package team.chronus.amona.presentation.master;
  */
 
 public class MasterFragment {
+
 }

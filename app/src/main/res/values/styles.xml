@@ -19,5 +19,6 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
-
+    <!--App bar layout theme-->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 </resources>
