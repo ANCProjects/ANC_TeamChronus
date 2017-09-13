@@ -6,7 +6,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Network State Permissions -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <!--Local storage to write maps to-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--Location permissions-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -15,6 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MaterialTheme">
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBvksCiDNQoKA50g3SaJbycJ2pwPbamCH0 "/>
         <activity android:name=".presentation.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,8 +30,12 @@
         </activity>
         <activity android:name=".presentation.auth.AuthActivity" />
         <activity android:name=".presentation.master.MasterActivity" />
+<<<<<<< HEAD
         <activity android:name=".presentation.detail.DetailActivity"></activity>
         <activity android:name=".presentation.auth.MeetupAuth"></activity>
+=======
+        <activity android:name=".presentation.detail.DetailActivity"/>
+>>>>>>> master
     </application>
 
 </manifest>

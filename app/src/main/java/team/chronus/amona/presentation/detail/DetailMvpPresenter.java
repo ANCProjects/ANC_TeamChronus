@@ -1,5 +1,7 @@
 package team.chronus.amona.presentation.detail;
 
+import android.location.Location;
+
 import team.chronus.amona.di.PerActivity;
 import team.chronus.amona.presentation.base.MvpPresenter;
 
@@ -9,5 +11,5 @@ import team.chronus.amona.presentation.base.MvpPresenter;
 
 @PerActivity
 public interface DetailMvpPresenter <V extends DetailMvpView> extends MvpPresenter<V> {
-
+    void loadDistance(Location currentLocation, Location meetUpLocation);
 }

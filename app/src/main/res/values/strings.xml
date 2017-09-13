@@ -17,7 +17,47 @@
     <string name="empty_screen">We do not have anything\nhere right now.</string>
     <string name="pull_refresh">Pull to refresh</string>
 
+<<<<<<< HEAD
     <!--API KEYS-->
     <string name="AUTH_KEY"></string>
+=======
+    <!--Event Strings-->
+    <string name="group_picture">group_picture</string>
+    <string name="event_name">Event Name</string>
+    <string name="group_name">Group Name</string>
+    <string name="event_date">Event Date</string>
+    <string name="event_description">Event Description</string>
+    <string name="no_events_available">No Events available in your current location</string>
+>>>>>>> master
 
+    <!--User Strings-->
+    <string name="user_image">User Image</string>
+    <string name="user_email">User Email</string>
+    <string name="users_name">User\'s Name</string>
+
+    <!--Navigation drawer strings-->
+    <string name="current_direction">Current Direction</string>
+    <string name="meet_ups">Meet ups</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="open_drawer">Open Navigation Drawer</string>
+    <string name="close_drawer">Close Navigation Drawer</string>
+    <string name="event_address">Event Address</string>
+
+    <!--Long String for long meet up description-->
+    <string name="long_event_desc">
+        Android has bundled the org.json classes into the SDK since the beginning, for use
+        in parsing JSON. These classes have a DOM-style interface: you hand JSONObject a
+        hunk of JSON, and it gives you an in-memory representation of the completely
+        parsed result. This is handy but, like the DOM, a bit of a performance hog.
+        API Level 11 added JSONReader , based on Google’s GSON parser, as a “streaming”
+        parser alternative. JSONReader is much more reminiscent of the XmlPullParser , in
+        that you pull events out of the “reader” and process them. This can have significant
+        performance advantages, particularly in terms of memory consumption, if you do
+        not need the entire JSON data structure. However, this is only available on API Level
+        11 and higher.
+        Because JSONReader is a bit “late to the party”, there has been extensive work on
+        getting other JSON parsers working on Android. The best third-party option today is
+        Jackson. Jackson offers a few APIs, and the streaming API reportedly works very
+        nicely on Android with top-notch performance.
+    </string>
 </resources>

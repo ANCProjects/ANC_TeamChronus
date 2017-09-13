@@ -9,5 +9,5 @@ import team.chronus.amona.presentation.base.MvpPresenter;
 
 @PerActivity
 public interface MasterMvpPresenter <V extends MasterMvpView> extends MvpPresenter<V> {
-
+    void loadEvents();
 }
