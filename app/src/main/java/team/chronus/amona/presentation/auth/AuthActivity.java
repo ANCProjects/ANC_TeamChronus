@@ -3,10 +3,15 @@ package team.chronus.amona.presentation.auth;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import team.chronus.amona.R;
 import team.chronus.amona.data.local.prefs.PreferencesHelper;
@@ -19,6 +24,9 @@ public class AuthActivity extends BaseActivity implements AuthMvpView {
     AuthMvpPresenter<AuthMvpView> mPresenter;
 
     PreferencesHelper mPref;
+
+    @BindView(R.id.button_meetup)
+    Button button_meetup;
 
 
     public static Intent getStartIntent(Context context) {
@@ -38,12 +46,7 @@ public class AuthActivity extends BaseActivity implements AuthMvpView {
         mPresenter.onAttach(AuthActivity.this);
 
         //Get the Meetup Tokens
-        mPref = new PreferencesHelper(getApplicationContext());
-        mPref.deleteAccesToken();
-        mPref.deleteExpiresIn();
-        mPref.deleteRefreshToken();
-
-        LaunchIntent();
+        button_meetup.setOnClickListener(v -> LaunchIntent());
     }
 
     public void LaunchIntent() {
@@ -54,32 +57,25 @@ public class AuthActivity extends BaseActivity implements AuthMvpView {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 1 && resultCode == RESULT_OK){
-            if(data != null) {
-                String access_token = data.getExtras().getString("access_token");
-                String refresh_token = data.getExtras().getString("refresh_token");
-                String expires_in = data.getExtras().getString("expires_in");
+            String access_token = data.getExtras().getString("access_token");
+            String refresh_token = data.getExtras().getString("refresh_token");
+            String expires_in = data.getExtras().getString("expires_in");
 
-                mPref = new PreferencesHelper(getApplicationContext());
-                mPref.deleteAccesToken();
-                mPref.deleteExpiresIn();
-                mPref.deleteRefreshToken();
+            Log.e("Access Token", access_token);
+            mPref = new PreferencesHelper(this);
 
-                mPref.saveRefreshToken(access_token);
-                mPref.saveRefreshToken(refresh_token);
+            if(!TextUtils.isEmpty(access_token) && !TextUtils.isEmpty(refresh_token) && !TextUtils.isEmpty(expires_in)) {
+                mPref.saveAccesToken(access_token);
                 mPref.saveExpiresIn(expires_in);
+                mPref.saveRefreshToken(refresh_token);
 
-                //mPref.saveAccesToken(access_token);
-               // mPref.saveExpiresIn(expires_in);
-               // mPref.saveRefreshToken(refresh_token);
-
-                //Move to another Activity here
-
-                Intent intent = new Intent(AuthActivity.this, MasterActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, MasterActivity.class));
             }
             else{
-                Log.d("Amona: ","Data is null");
+                Toast.makeText(this, "An error occurred. Try to login again", Toast.LENGTH_SHORT).show();
             }
+
+            //Move to another Activity here
         }
     }
 

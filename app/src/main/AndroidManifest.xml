@@ -30,11 +30,11 @@
         </activity>
         <activity android:name=".presentation.auth.AuthActivity" />
         <activity android:name=".presentation.master.MasterActivity" />
-<<<<<<< HEAD
+<!--<<<.<<<< HEAD-->
         <activity android:name=".presentation.detail.DetailActivity"></activity>
         <activity android:name=".presentation.auth.MeetupAuth"></activity>
 =======
-        <activity android:name=".presentation.detail.DetailActivity"/>
+        <!--<activity android:name=".presentation.detail.DetailActivity"/>-->
 >>>>>>> master
     </application>
 
